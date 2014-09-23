@@ -1,4 +1,5 @@
 <!--
+~~~第2次提交~~~
  android:background="@drawable/simpsons"
  界面背景
 -->
@@ -31,14 +32,13 @@
         android:text="版本"
         android:textColor="#000000"
         android:textSize="18dp" />
-    
-    <ProgressBar 
+
+    <ProgressBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_version"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        />
+        android:layout_marginTop="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -46,7 +46,7 @@
         android:layout_below="@id/tv_version"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="300dp"
-        android:text="vigiles\n© 2014"
+        android:text=" vigiles\n© 2014"
         android:textColor="#000000"
         android:textSize="12dp" />
 

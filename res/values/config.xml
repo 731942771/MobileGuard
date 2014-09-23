@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+~~~第3次提交~~~
+新建的文件
+-->
+
+<resources>
+
+    <!-- updateurl-更新请求网址 -->
+    <string name="updateurl">http://www.cuiweiyou.com/wp-content/uploads/2014/09/updateinfo.html</string>
+
+</resources>

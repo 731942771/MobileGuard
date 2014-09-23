@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
+~~~第2次提交~~~
 版本格式惯例：
 累加形式：
 	versionCode="3"			数值类型,Int
@@ -16,6 +17,12 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
+    <!--
+    ~~~第3次提交~~~
+    权限：联网
+    -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <uses-sdk
         android:minSdkVersion="10"
         android:targetSdkVersion="19" />
@@ -27,6 +34,7 @@
         android:theme="@style/AppTheme" >
 
         <!--
+        ~~~第2次提交~~~
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
         	界面主题：没有标题栏，全屏
         -->
@@ -34,12 +42,18 @@
             android:name=".WelcomeActivity"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
-            
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <!--
+        ~~~第3次提交~~~
+        	新建的界面，应用的主界面
+        -->
+        <activity android:name=".HomeActivity"/>
     </application>
 
 </manifest>
