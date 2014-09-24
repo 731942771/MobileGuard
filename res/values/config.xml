@@ -4,10 +4,16 @@
 ~~~第3次提交~~~
 新建的文件
 -->
-
+<!--
+~~~第4次提交~~~
+updateinfo.html更新了一下
+-->
 <resources>
 
-    <!-- updateurl-更新请求网址 -->
+    <!-- updateurl-更新请求网址
+    ~~~第4次提交~~~
+    用notepad++将json文件以UTF-8无BOM格式编码，否则org.json.JSONException: Value ﻿ of type java.lang.String cannot be converted to JSONObject
+    -->
     <string name="updateurl">http://www.cuiweiyou.com/wp-content/uploads/2014/09/updateinfo.html</string>
 
 </resources>

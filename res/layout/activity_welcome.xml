@@ -10,6 +10,7 @@
     android:background="@drawable/simpsons"
     tools:context="com.cuiweiyou.mobileguard.WelcomeActivity" >
 
+    <!-- 应用名称 -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -23,6 +24,7 @@
         android:textColor="#ff3300"
         android:textSize="22dp" />
 
+    <!-- 当前版本 -->
     <TextView
         android:id="@+id/tv_version"
         android:layout_width="wrap_content"
@@ -33,6 +35,7 @@
         android:textColor="#000000"
         android:textSize="18dp" />
 
+    <!-- 运行中 -->
     <ProgressBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,6 +43,18 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp" />
 
+    <!-- 下载比例 -->
+    <TextView
+        android:id="@+id/tv_download_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_version"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:textColor="#000000"
+        android:textSize="12dp" />
+
+    <!-- 版权信息 -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
