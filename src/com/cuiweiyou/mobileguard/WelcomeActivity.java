@@ -16,8 +16,10 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -154,7 +156,8 @@ public class WelcomeActivity extends Activity {
 											// 要使用info.result.getPath()，须 extends Activity
 											System.err.println("文件：" + info.result.getPath() + ".");
 											
-/*											// 1.意图
+/*------------------------------------------------------------------------------------------------------------------------
+											// 1.意图
 											Intent intent = new Intent();
 											// 2.打开新界面。对应apk文件，打开安装器
 											intent.setAction("android.intent.action.VIEW");
@@ -167,15 +170,15 @@ public class WelcomeActivity extends Activity {
 											intent.setDataAndType(Uri.fromFile(apk), "application/vnd.android.apckage-archive");
 											// 6.实施意图
 											
--------------------------------------------------------------这里报错-------------------------------------------------------
-09-24 00:04:22.549: E/AndroidRuntime(1818): 
-android.content.ActivityNotFoundException: 
- No Activity found to handle Intent { 
-	 act=android.intent.action.VIEW 
-	 cat=[android.intent.category.DEFAULT] 
-	 dat=file:///storage/sdcard/MobilGuard.apk 
-	 typ=application/vnd.android.apckage-archive 
- }
+											------------------这里报错-------------------------------
+												09-24 00:04:22.549: E/AndroidRuntime(1818): 
+												android.content.ActivityNotFoundException: 
+												 No Activity found to handle Intent { 
+													 act=android.intent.action.VIEW 
+													 cat=[android.intent.category.DEFAULT] 
+													 dat=file:///storage/sdcard/MobilGuard.apk 
+													 typ=application/vnd.android.apckage-archive 
+												 }
 											startActivity(intent);
 **///--------------------------------------------以下是替换方法--------------------------------------------------------------
 											// 1.创建意图
@@ -203,39 +206,54 @@ android.content.ActivityNotFoundException:
 					/** 5.取消按钮（文本，事件） **/
 					dialog.setNegativeButton("取消", new OnClickListener() {
 						public void onClick(DialogInterface dialog, int which) {
-							/** 什么都不写默认实现就是关闭掉对话框 **/
+							/** ~~~第5次提交~~~ **/
+							enterHomeActivity();
 						}
 					});
 					
 					/** 6.禁用系统的返回功能 **/
-					dialog.setCancelable(false);// 在这个Handler里达不到禁用返回键的效果
+					//dialog.setCancelable(false);	//~~~第5次提交~~~ 禁用返回键有效，强制升级未必会有好体验
+					/** 
+					 * ~~~第5次提交~~~ 
+					 * 禁用返回键有效，强制升级未必会有好体验 
+					 */
+					dialog.setOnCancelListener(new OnCancelListener(){
+						@Override
+						public void onCancel(DialogInterface dialog) {
+							// 销毁对话框
+							dialog.dismiss();
+							// 进入下一界面
+							enterHomeActivity();
+						}
+					});
 					
 					/** 7.显示对话框 **/
 					dialog.show();	// 其中调用create方法
-					
-					// enterHomeActivity();
 				break;
 				case URL_EXCEPTION_DIALOG:	// 异常情况提示
 					Toast.makeText(getApplicationContext(), "网络路径无效错误，下次更新吧", 5).show();
-					// enterHomeActivity();
+					enterHomeActivity();
 				break;
 				case PROTOCOL_EXCEPTION_DIALOG:	// 异常情况提示
 					Toast.makeText(getApplicationContext(), "数据传输协议不匹配而导致无法与远程方进行通信，下次更新吧", 5).show();
-					// enterHomeActivity();
+					enterHomeActivity();
 					break;
 				case IO_EXCEPTION_DIALOG:	// 异常情况提示
 					Toast.makeText(getApplicationContext(), "网络读写错误，下次更新吧", 5).show();
-					// enterHomeActivity();
+					enterHomeActivity();
 					break;
 				case JSON_EXCEPTION_DIALOG:	// 异常情况提示
 					Toast.makeText(getApplicationContext(), "JSON数据错误，下次更新吧", 5).show();
-					// enterHomeActivity();
+					enterHomeActivity();
 					break;
 			}
 			
 		}
 	};
 
+	/**
+	 * 创建欢迎界面
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -243,8 +261,11 @@ android.content.ActivityNotFoundException:
 
 		// 获取控件
 		TextView tv_version = (TextView) findViewById(R.id.tv_version);
+		System.err.println("IIIFF:" + tv_version.getId());
+		String versionName = getVersionName();
 		// 当前版本
-		tv_version.setText("版本 " + getVersionName());
+		tv_version.setText("版本 " + versionName);
+		
 		// 更新信息
 		tv_download_info = (TextView) findViewById(R.id.tv_download_info);
 
@@ -253,7 +274,28 @@ android.content.ActivityNotFoundException:
 		
  		检查版本升级
  		**/
-		getVersionUpdate();
+		//getVersionUpdate();
+		
+		/** 
+		~~~第5次提交~~~
+		
+ 		先获取配置信息，根据autoupdate的配置绝对是否检查更新
+		 **/
+		// 1.获取配置存储器（文件，模式）
+		SharedPreferences sp = getSharedPreferences("mobileguard_setting_config", MODE_PRIVATE);
+		// 2.读取配置（key，读不到时的默认值）。读取失败，默认是检测更新
+		boolean autoupdate = sp.getBoolean("autoupdate", true);
+		// 3.根据配置决定是否检查更新
+		if(autoupdate){				// 更新
+			getVersionUpdate();
+		} else {					// 不更新
+			// 如果配置不更新，仍然显示欢迎界面2秒，然后自动进入主界面
+			handler.postDelayed(new Runnable(){
+				@Override
+				public void run() {
+					enterHomeActivity();
+				}}, 2000);
+		}
 	}
 	
 	/** 
@@ -350,11 +392,11 @@ android.content.ActivityNotFoundException:
 					long endTime = System.currentTimeMillis();
 					// 耗时-也就是欢迎界面的显示时长
 					long distanceTime = endTime - startTime;
-					// 欢迎界面至少显示3秒
-					if( distanceTime < 3000){
+					// 欢迎界面至少显示2秒
+					if( distanceTime < 2000){
 						try {
-							// 不到3s就等一会儿
-							Thread.sleep(3000 - distanceTime);
+							// 不到2s就等一会儿
+							Thread.sleep(2000 - distanceTime);
 						} catch (InterruptedException e) {
 							e.printStackTrace();
 						}

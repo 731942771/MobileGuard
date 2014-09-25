@@ -3,19 +3,59 @@
 
  给整个布局增加一个id属性layout_home
 -->
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--
+ ~~~第5次提交~~~
+ 
+改相对布局为线性LinearLayout
+增加GridView
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.cuiweiyou.mobileguard.HomeActivity" >
+    android:orientation="vertical" >
 
+    <!-- 标题 -->
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="应用主界面"
-        android:textSize="30dp" />
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="欢迎使用手机安全卫士"
+        android:textSize="26dp" />
+    
+    <!-- 信息滚动条
+    Button具有focusableInTouchMode属性，天生即可获取焦点
+    -->
+    <!-- Button
+        android:id="@+id/btn_msg"
+        android:focusableInTouchMode="true"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:text="滚动条~~~~~~~~~~~~~~adfasd定个时间滑动关节gsafhgsadg~~~发的手术费个精光~dasgfghf发的发个煽风点火h~~~~~~~"
+        android:textSize="12dp" / >  -->
+        
+    <!-- 自定义的信息滚动条
+    取消了 android:focusableInTouchMode="true"
+    -->
+    <com.cuiweiyou.mobileguard.ui.FocusedTextView
+        android:id="@+id/btn_msg"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:text="滚动条~~~~~~~~~~~~~~adfasd定个时间滑动关节gsafhgsadg~~~发的手术费个精光~dasgfghf发的发个煽风点火h~~~~~~~"
+        android:textSize="12dp" />
 
-</RelativeLayout>
+    <!-- 9宫格 -->
+    <GridView
+        android:id="@+id/gv_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:numColumns="3"
+        android:paddingLeft="30dp" />
+
+</LinearLayout>

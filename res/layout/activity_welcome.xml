@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="60dp"
-        android:text="版本"
+        android:text=" "
         android:textColor="#000000"
         android:textSize="18dp" />
 
@@ -60,7 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_version"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="240dp"
         android:text=" vigiles\n© 2014"
         android:textColor="#000000"
         android:textSize="12dp" />

@@ -1,0 +1,31 @@
+<!--
+ ~~~第5次提交~~~
+新建的“设置中心”界面布局
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_setting"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!-- 标题 -->
+    <TextView
+        android:background="#ff6600"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:text="设置中心"
+        android:textSize="26dp" />
+    
+	<!--
+	！3）~~~~~~~~~~~~~~~~~~~~~自定义控件 3 ~~~~~~~~~~~~~~~~~~~~~~~~~
+	使用自定义的组合控件类创建条目 
+	-->
+	<com.cuiweiyou.mobileguard.ui.SettingItemRelativeLayout
+	    android:id="@+id/sirl_setting_item"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"/>
+	
+</LinearLayout>

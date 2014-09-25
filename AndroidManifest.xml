@@ -38,6 +38,11 @@
         android:minSdkVersion="10"
         android:targetSdkVersion="19" />
 
+	<!--
+	~~~第5次提交~~~
+		删除  <activity android:theme="@android:style/Theme.Black.NoTitleBar" 
+		将<item name="android:windowNoTitle">true</item>放入<application android:theme="@style/AppTheme" >
+	-->
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -46,16 +51,19 @@
 
         <!--
         ~~~第2次提交~~~
-            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+            android:theme="@android:style/Theme.Black.NoTitleBar"
         	界面主题：没有标题栏，全屏
+        -->
+        <!--
+        ~~~第5次提交~~~
+			删除 android:theme="@android:style/Theme.Black.NoTitleBar" 
+			将Theme.Black.NoTitleBar.Fullscreen放入<application android:theme="@style/AppTheme" >
         -->
         <activity
             android:name=".WelcomeActivity"
-            android:label="@string/app_name"
-            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -65,6 +73,12 @@
         	新建的界面，应用的主界面
         -->
         <activity android:name=".HomeActivity"/>
+        
+        <!--
+        ~~~第5次提交~~~
+        	新界面，“设置中心”功能界面
+        -->
+        <activity android:name=".SettingActivity"/>
     </application>
 
 </manifest>
