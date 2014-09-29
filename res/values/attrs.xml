@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="TextView">
+        <attr name="autoupdate_title" format="string" />
+        <attr name="autoupdate_desc_on" format="string" />
+        <attr name="autoupdate_desc_off" format="string" />
+    </declare-styleable>
+
+</resources>
+<!--
+ ~~~第6次提交~~~
+ 2~~》自定义属性
+-->

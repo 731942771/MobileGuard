@@ -35,25 +35,9 @@ import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.HttpHandler;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
-
 /**
-~~~第2次提交~~~
-
- * 第一个界面的作用：
- * 1.展示产品Logo
- * 2.应用程序初始化（元数据-数据库、配置信息、尺寸、登录信息）
- * 3.检查新版本
- * 4.检查当前程序的注册信息、版权
- * 5.检查网络
- * 6.。。。。。。
- */
-
-/**
-~~~第2次提交~~~
-
- * 创建项目时，Theme为None。本Activity继承自ActionBarActivity，测试时报错： Unable to start
- * activity ComponentInfo : java.lang.IllegalStateException: You need to use a
- * Theme.AppCompat theme (or descendant) with this activity.
+ * 欢迎界面
+ * @author Administrator
  */
 public class WelcomeActivity extends Activity {
 	/** 新版本apk文件路径 **/
@@ -76,8 +60,6 @@ public class WelcomeActivity extends Activity {
 	protected static final int JSON_EXCEPTION_DIALOG = 5;
 	
 	/**
-	~~~第3次提交~~~
-	
 	 * 异步的消息处理器，根据消息作出反应：
 	 * 直接进入主界面 / 提示更新 / 提示错误信息 
 	 **/
@@ -91,14 +73,6 @@ public class WelcomeActivity extends Activity {
 					enterHomeActivity();
 				break;
 				case UPDATE_DIALOG:	// 更新提示
-					
-					/**
-					 * ~~~第4次提交~~~
-					 * 
-					 * 检查更新功能进一步实现
-					 * 使用XUtils（原afinal）https://github.com/wyouflf/xUtils
-					 **/
-					//Toast.makeText(getApplicationContext(), "有新版本啦", 0).show();
 					
 					/** 1.对话框的创建器 */
 					AlertDialog.Builder dialog = new Builder(WelcomeActivity.this);
@@ -156,31 +130,6 @@ public class WelcomeActivity extends Activity {
 											// 要使用info.result.getPath()，须 extends Activity
 											System.err.println("文件：" + info.result.getPath() + ".");
 											
-/*------------------------------------------------------------------------------------------------------------------------
-											// 1.意图
-											Intent intent = new Intent();
-											// 2.打开新界面。对应apk文件，打开安装器
-											intent.setAction("android.intent.action.VIEW");
-											// 3.意图类型
-											intent.addCategory("android.intent.category.DEFAULT");
-											// 4.目标文件
-											// info.result.getPath() = (4.4.2)/storage/sdcard/MobilGuard.apk，(4.1.2)/mnt/sdcard/m----
-											File apk = new File(info.result.getPath().trim());
-											// 5.意图操作的文件和文件类型，也就是打开这个文件，开始安装
-											intent.setDataAndType(Uri.fromFile(apk), "application/vnd.android.apckage-archive");
-											// 6.实施意图
-											
-											------------------这里报错-------------------------------
-												09-24 00:04:22.549: E/AndroidRuntime(1818): 
-												android.content.ActivityNotFoundException: 
-												 No Activity found to handle Intent { 
-													 act=android.intent.action.VIEW 
-													 cat=[android.intent.category.DEFAULT] 
-													 dat=file:///storage/sdcard/MobilGuard.apk 
-													 typ=application/vnd.android.apckage-archive 
-												 }
-											startActivity(intent);
-**///--------------------------------------------以下是替换方法--------------------------------------------------------------
 											// 1.创建意图
 											Intent intent = new Intent(Intent.ACTION_VIEW);	// 同上
 											// 2.意图实施对象（文件，文件类型）
@@ -269,16 +218,7 @@ public class WelcomeActivity extends Activity {
 		// 更新信息
 		tv_download_info = (TextView) findViewById(R.id.tv_download_info);
 
-		/** 
-		~~~第3次提交~~~
-		
- 		检查版本升级
- 		**/
-		//getVersionUpdate();
-		
-		/** 
-		~~~第5次提交~~~
-		
+		/**
  		先获取配置信息，根据autoupdate的配置绝对是否检查更新
 		 **/
 		// 1.获取配置存储器（文件，模式）
@@ -296,22 +236,13 @@ public class WelcomeActivity extends Activity {
 					enterHomeActivity();
 				}}, 2000);
 		}
+		
 	}
 	
-	/** 
-	 * ~~~第3次提交~~~
-	 * 
+	/**
 	 * 检查版本升级 
 	 */
 	private void getVersionUpdate() {
-		/**
-		 * JSON数据（编码：UTF-8） 
-		 * version：版本
-		 * description：描述 
-		 * apkurl：文件地址
-		 * 可以将此文件保存为html放在网站上，如：
-		 * http://www.cuiweiyou.com/wp-content/uploads/2014/09/updateinfo.html
-		 */
 		
 		new Thread(){
 			@Override

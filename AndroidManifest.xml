@@ -1,84 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-~~~第2次提交~~~
-版本格式惯例：
-累加形式：
-	versionCode="3"			数值类型,Int
-	versionName="1.1.1.3"	字串类型,String
-累加形式：
-	versionCode="3"
-	versionName="3.0"
- 日期形式：
-	versionCode="20140923"
-	versionName="1.1.1.3"
--->
-<!-- 
-~~~第4次提交~~~
-当前版本是1.0，服务器上的是2.0
--->
+
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cuiweiyou.mobileguard"
     android:versionCode="1"
     android:versionName="1.0" >
 
-    <!--
-    ~~~第3次提交~~~
-    权限：联网
-    -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <!--
-    ~~~第4次提交~~~
-    权限：读写内存卡。也用到上面的访问网络权限
-    -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/> 
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
 
     <uses-sdk
         android:minSdkVersion="10"
         android:targetSdkVersion="19" />
 
-	<!--
-	~~~第5次提交~~~
-		删除  <activity android:theme="@android:style/Theme.Black.NoTitleBar" 
-		将<item name="android:windowNoTitle">true</item>放入<application android:theme="@style/AppTheme" >
-	-->
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
 
-        <!--
-        ~~~第2次提交~~~
-            android:theme="@android:style/Theme.Black.NoTitleBar"
-        	界面主题：没有标题栏，全屏
-        -->
-        <!--
-        ~~~第5次提交~~~
-			删除 android:theme="@android:style/Theme.Black.NoTitleBar" 
-			将Theme.Black.NoTitleBar.Fullscreen放入<application android:theme="@style/AppTheme" >
-        -->
         <activity
             android:name=".WelcomeActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-        <!--
-        ~~~第3次提交~~~
-        	新建的界面，应用的主界面
-        -->
-        <activity android:name=".HomeActivity"/>
-        
-        <!--
-        ~~~第5次提交~~~
-        	新界面，“设置中心”功能界面
-        -->
-        <activity android:name=".SettingActivity"/>
+
+
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".SettingActivity" />
+        <activity android:name=".SecurityActivity"/>
     </application>
 
 </manifest>
