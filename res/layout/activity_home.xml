@@ -7,8 +7,9 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="10dp"
+        android:background="#ff6600"
         android:gravity="center"
         android:text="欢迎使用手机安全卫士"
         android:textSize="26dp" />
@@ -23,13 +24,14 @@
         android:textSize="12dp" />
 
     <!-- 9宫格 -->
+
     <GridView
-        android:padding="20dp"
-        android:horizontalSpacing="50dp"
-        android:verticalSpacing="10dp"
         android:id="@+id/gv_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:numColumns="3"/>
+        android:horizontalSpacing="50dp"
+        android:numColumns="3"
+        android:padding="20dp"
+        android:verticalSpacing="10dp" />
 
 </LinearLayout>

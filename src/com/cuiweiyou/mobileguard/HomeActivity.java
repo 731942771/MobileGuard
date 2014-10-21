@@ -1,14 +1,11 @@
 package com.cuiweiyou.mobileguard;
 
-import com.cuiweiyou.mobileguard.utils.Md5Tool;
-
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
-import android.text.Editable;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -24,8 +21,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.cuiweiyou.mobileguard.utils.Md5Tool;
+
 /**  应用程序的主界面 */
-public class HomeActivity extends ActionBarActivity {
+public class HomeActivity extends Activity {
 	
 	/** 9宫格名称 **/
 	private String[] item_names = {
@@ -136,7 +135,7 @@ public class HomeActivity extends ActionBarActivity {
 		
 		// 如果有密码，输入并确认
 		if(!TextUtils.isEmpty(guardPswd)){	// null时，TextUtils.isEmpty(guardPswd)判断是空的，为true
-			confirmPhoneGurdPswd();
+			confirmPhoneGurdPswd(guardPswd);
 		}
 		// 如果没有，则新建密码并保存
 		else {
@@ -147,7 +146,7 @@ public class HomeActivity extends ActionBarActivity {
 	/**
 	 *  输入并确认“手机防盗”密码
 	 */
-	private void confirmPhoneGurdPswd() {
+	private void confirmPhoneGurdPswd(final String guardPswd) {
 		
 		// 1.创建弹出式对话框
 		AlertDialog.Builder alertDialog = new android.app.AlertDialog.Builder(HomeActivity.this);	// 系统默认Dialog没有输入框
@@ -165,12 +164,16 @@ public class HomeActivity extends ActionBarActivity {
 			public void onClick(View v) {
 				// 提取文本框中输入的文本密码
 				String str_confirmphoneguardpswd = et_dialog_confirmphoneguardpswd.getText().toString();
-				// 提取配置文件中保存的密码
-				String phoneGuardPswd = sp.getString("phoneguardpswd", null);
+				
 				// 比对
-				if (!TextUtils.isEmpty(str_confirmphoneguardpswd) && Md5Tool.domd5(str_confirmphoneguardpswd).equals(phoneGuardPswd)) {
+				if (!TextUtils.isEmpty(str_confirmphoneguardpswd) && Md5Tool.domd5(str_confirmphoneguardpswd).equals(guardPswd)) {
 					tempDialog.dismiss();
-					Toast.makeText(HomeActivity.this, "密码验证成功", 0).show();
+					// Toast.makeText(HomeActivity.this, "密码验证成功", 0).show();
+					
+					/** 如果密码验证成，进入“手机防盗”界面 **/
+					Intent i = new Intent(HomeActivity.this, GuideForSecurityActivity1.class);
+					startActivity(i);
+					
 				} else {
 					et_dialog_confirmphoneguardpswd.setText("");
 					Toast.makeText(HomeActivity.this, "密码验证错误", 0).show();
@@ -286,7 +289,8 @@ public class HomeActivity extends ActionBarActivity {
 		 */
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
-			View grid_item;
+/*------------ 优化----------------------------------
+ * 			View grid_item;
 			// 判断缓存是否存在。没有，就创建
 			if(convertView == null){
 				// 1.把xml表述的layout转化为View对象
@@ -304,7 +308,40 @@ public class HomeActivity extends ActionBarActivity {
 			// 根据当前格子的位置，对应的取功能名
 			tv_grid_item.setText(item_names[position]);
 			
-			return grid_item;
+			return grid_item;*/
+			
+			View grid_item;
+			ViewHolder holder=null;
+			// 判断缓存是否存在。没有，就创建
+			if(convertView == null){
+				holder=new ViewHolder();
+				// 1.把xml表述的layout转化为View对象
+				convertView = View.inflate(HomeActivity.this, R.layout.grid_item_home, null);
+				// 保存
+				holder.iv_grid_item=(ImageView) convertView.findViewById(R.id.iv_grid_item);
+				holder.tv_grid_item = (TextView) convertView.findViewById(R.id.tv_grid_item);
+				// 把查找的view缓存起来方便多次重，不用重新构建
+				convertView.setTag(holder);
+			} else {	// 有缓存，使用
+				holder=(ViewHolder)convertView.getTag();
+			}
+			
+			// 2.获取格子的图片控件
+			// iv_grid_item = (ImageView) grid_item.findViewById(R.id.iv_grid_item);
+			holder.iv_grid_item.setImageResource(item_imgs[position]);
+			
+			// 根据当前格子的位置，对应的取功能名
+			holder.tv_grid_item.setText(item_names[position]);
+			
+			return convertView;
+		}
+		
+		/**
+		 * ListView优化 
+		 */
+		class ViewHolder{
+			ImageView iv_grid_item;
+			TextView tv_grid_item;
 		}
 
 		/** 格子 **/

@@ -6,5 +6,6 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_activity_security">SecurityActivity</string>
+    <string name="title_activity_guide_for_security_activity1">GuideForSecurityActivity1</string>
 
 </resources>
