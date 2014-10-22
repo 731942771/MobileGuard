@@ -2,15 +2,21 @@ package com.cuiweiyou.mobileguard;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.graphics.AvoidXfermode;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
@@ -149,12 +155,12 @@ public class HomeActivity extends Activity {
 	private void confirmPhoneGurdPswd(final String guardPswd) {
 		
 		// 1.创建弹出式对话框
-		AlertDialog.Builder alertDialog = new android.app.AlertDialog.Builder(HomeActivity.this);	// 系统默认Dialog没有输入框
+		final AlertDialog.Builder alertDialog = new android.app.AlertDialog.Builder(HomeActivity.this);	// 系统默认Dialog没有输入框
 		
 		// 2.获取自定义的布局（上下文-因为这个对话框仅在此界面使用所以为this，源，被替换者）。/res/layout/自定义布局文件
 		View alertDialogView = View.inflate(HomeActivity.this, R.layout.activity_dialog_confirmphoneguardpswd, null);
 		
-		// 1）密码框， 第2次输入
+		// 1）密码框
 		final EditText et_dialog_confirmphoneguardpswd = (EditText) alertDialogView.findViewById(R.id.et_dialog_confirmphoneguardpswd);
 		
 		// 2）确认按钮，确认验证密码
@@ -195,6 +201,15 @@ public class HomeActivity extends Activity {
 		
 		tempDialog = alertDialog.create();
 		tempDialog.setView(alertDialogView, 0, 0, 0, 0);
+		
+		/** 自动弹出软键盘 **/
+		tempDialog.setOnShowListener(new OnShowListener() {
+		    public void onShow(DialogInterface dialog) {
+		        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+		        imm.showSoftInput(et_dialog_confirmphoneguardpswd, InputMethodManager.SHOW_IMPLICIT);
+		    }
+		});
+		
 		tempDialog.show();
 	}
 	

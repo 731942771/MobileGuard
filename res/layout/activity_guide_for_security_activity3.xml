@@ -2,7 +2,7 @@
     xmlns:cuiweiyou="http://schemas.android.com/apk/res/com.cuiweiyou.mobileguard"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical" >
 
     <TextView
@@ -10,29 +10,13 @@
         android:layout_height="32dip"
         android:background="#ff6600"
         android:gravity="center"
-        android:text="手机防盗设置向导 4-1"
+        android:text="手机防盗设置向导 4-3"
         android:textSize="18dip" />
 
     <TextView
         style="@style/MyTextViewTheme"
         android:drawableLeft="@android:drawable/star_on"
-        android:text="SIM卡变更报警"
-        android:textColor="#ff3300"
-        android:textStyle="bold" />
-
-    <TextView
-        style="@style/MyTextViewTheme"
-        android:text="下次重启时SIM卡发生变动，将发送报警短信至安全号码"
-        android:textColor="#ff3300"
-        android:textStyle="bold" />
-    
-	<com.cuiweiyou.mobileguard.ui.SettingItemRelativeLayout
-	    cuiweiyou:autoupdate_title="点击绑定SIM卡"
-	    cuiweiyou:autoupdate_desc_on="SIM卡绑定功能已经打开"
-	    cuiweiyou:autoupdate_desc_off="SIM卡绑定功能已经关闭"
-	    android:id="@+id/chbox_agsa1_sim_power"
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"/>
+        android:text="SIM卡变更报警"/>
 
     <TextView
         style="@style/MyTextViewTheme"
@@ -42,7 +26,23 @@
     <TextView
         style="@style/MyTextViewTheme"
         android:drawableLeft="@android:drawable/star_on"
-        android:text="远程数据销毁" />
+        android:text="远程数据销毁" 
+        android:textColor="#ff3300"
+        android:textStyle="bold" />
+    
+    <TextView
+        style="@style/MyTextViewTheme"
+        android:text="手机遗失时，使用本功能销毁隐私数据"
+        android:textColor="#ff3300"
+        android:textStyle="bold" />
+    
+	<com.cuiweiyou.mobileguard.ui.SettingItemRelativeLayout
+	    cuiweiyou:autoupdate_title="设置远程数据销毁"
+	    cuiweiyou:autoupdate_desc_on="远程数据销毁功能已经打开"
+	    cuiweiyou:autoupdate_desc_off="远程数据销毁功能已经关闭"
+	    android:id="@+id/chbox_agsa3_breakdata_power"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"/>
 
     <TextView
         style="@style/MyTextViewTheme"
@@ -59,17 +59,17 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:src="@android:drawable/presence_invisible" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/presence_invisible" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:src="@android:drawable/presence_online" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/presence_invisible" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/presence_invisible" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -82,9 +82,12 @@
         android:layout_height="fill_parent" >
 
         <Button
-            android:id="@+id/btn_agsa1_next"
+            android:id="@+id/btn_agsa3_prev"
+            style="@style/MyButtonStyle_Prev" />
+
+        <Button
+            android:id="@+id/btn_agsa3_next"
             style="@style/MyButtonStyle_Next" />
-       
     </RelativeLayout>
 
 </LinearLayout>

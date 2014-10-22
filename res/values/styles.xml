@@ -28,4 +28,22 @@
         <item name="android:textSize">14dip</item>
     </style>
 
+    <!-- 按钮的style，Button的style引用@style/My... -->
+    <style name="MyButtonStyle_Next" parent="MyTextViewTheme">
+        <item name="android:background">@drawable/style_mybutton</item>
+        <item name="android:drawableRight">@drawable/button_next</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:text">下一步</item>
+    </style>
+    
+    <style name="MyButtonStyle_Prev" parent="MyTextViewTheme">
+        <item name="android:background">@drawable/style_mybutton</item>
+        <item name="android:drawableLeft">@drawable/button_prev</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_marginLeft">0dip</item>
+        <item name="android:text">上一步</item>
+    </style>
+
 </resources>

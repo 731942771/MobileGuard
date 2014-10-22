@@ -42,3 +42,8 @@ View.inflate()方法把xml布局转为View控件<br/><br/>
 \</selector><br/>
 2）在按钮的background中引用这个风格<br/>
 \<Button android:background="@drawable/style_mybutton" <br/>
+
+#第8次提交
+1.设置向导流完成，4个界面<br/>
+2.第一个界面设置安全号码初步完成<br/>
+

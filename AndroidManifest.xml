@@ -31,6 +31,9 @@
         <activity android:name=".SettingActivity" />
         <activity android:name=".SecurityActivity" />
         <activity android:name=".GuideForSecurityActivity1"/>
+        <activity android:name=".GuideForSecurityActivity2"/>
+        <activity android:name=".GuideForSecurityActivity3"/>
+        <activity android:name=".GuideForSecurityActivity4"/>
     </application>
 
 </manifest>

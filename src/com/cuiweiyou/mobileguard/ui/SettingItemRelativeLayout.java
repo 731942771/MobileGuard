@@ -116,6 +116,9 @@ public class SettingItemRelativeLayout extends RelativeLayout {
 		autoupdate_desc_off = attrs.getAttributeValue("http://schemas.android.com/apk/res/com.cuiweiyou.mobileguard", "autoupdate_desc_off");
 		
 		initItem(context);
+		
+		// 默认没有勾选
+		tv_setting_item_autoupdate_info.setText(autoupdate_desc_off);
 	}
 
 	/**

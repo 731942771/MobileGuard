@@ -27,12 +27,8 @@ public class SettingActivity extends Activity {
 		// (1)创建私有配置文件（“文件名”， 私有模式）
 		sp = getSharedPreferences("mobileguard_setting_config", MODE_PRIVATE);
 		
-		/**
-		！4）~~~~~~~~~~~~~~~~~~~~~自定义控件 4 ~~~~~~~~~~~~~~~~~~~~~~~~~
-		**/
 		/** 1.找到自定义类创建的组合控件 **/
 		sirl_setting_item = (SettingItemRelativeLayout) findViewById(R.id.sirl_setting_item);
-		
 		
 		// 查看上一次配置，更新控件
 		boolean autoupdate = sp.getBoolean("autoupdate", false);

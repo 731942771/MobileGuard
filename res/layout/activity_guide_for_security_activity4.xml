@@ -2,7 +2,7 @@
     xmlns:cuiweiyou="http://schemas.android.com/apk/res/com.cuiweiyou.mobileguard"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical" >
 
     <TextView
@@ -10,29 +10,13 @@
         android:layout_height="32dip"
         android:background="#ff6600"
         android:gravity="center"
-        android:text="手机防盗设置向导 4-1"
+        android:text="手机防盗设置向导 4-4"
         android:textSize="18dip" />
 
     <TextView
         style="@style/MyTextViewTheme"
         android:drawableLeft="@android:drawable/star_on"
-        android:text="SIM卡变更报警"
-        android:textColor="#ff3300"
-        android:textStyle="bold" />
-
-    <TextView
-        style="@style/MyTextViewTheme"
-        android:text="下次重启时SIM卡发生变动，将发送报警短信至安全号码"
-        android:textColor="#ff3300"
-        android:textStyle="bold" />
-    
-	<com.cuiweiyou.mobileguard.ui.SettingItemRelativeLayout
-	    cuiweiyou:autoupdate_title="点击绑定SIM卡"
-	    cuiweiyou:autoupdate_desc_on="SIM卡绑定功能已经打开"
-	    cuiweiyou:autoupdate_desc_off="SIM卡绑定功能已经关闭"
-	    android:id="@+id/chbox_agsa1_sim_power"
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"/>
+        android:text="SIM卡变更报警" />
 
     <TextView
         style="@style/MyTextViewTheme"
@@ -47,7 +31,23 @@
     <TextView
         style="@style/MyTextViewTheme"
         android:drawableLeft="@android:drawable/star_on"
-        android:text="远程锁屏" />
+        android:text="远程锁屏"
+        android:textColor="#ff3300"
+        android:textStyle="bold" />
+
+    <TextView
+        style="@style/MyTextViewTheme"
+        android:text="手机遗失时，锁定手机"
+        android:textColor="#ff3300"
+        android:textStyle="bold" />
+
+    <com.cuiweiyou.mobileguard.ui.SettingItemRelativeLayout
+        android:id="@+id/chbox_agsa4_clock_power"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        cuiweiyou:autoupdate_desc_off="远程锁屏功能已经关闭"
+        cuiweiyou:autoupdate_desc_on="远程锁屏功能已经打开"
+        cuiweiyou:autoupdate_title="设置远程锁屏" />
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -59,22 +59,22 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:src="@android:drawable/presence_invisible" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/presence_invisible" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/presence_invisible" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:src="@android:drawable/presence_online" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/presence_invisible" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/presence_invisible" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/presence_invisible" />
     </LinearLayout>
 
     <RelativeLayout
@@ -82,9 +82,18 @@
         android:layout_height="fill_parent" >
 
         <Button
-            android:id="@+id/btn_agsa1_next"
-            style="@style/MyButtonStyle_Next" />
-       
+            android:id="@+id/btn_agsa4_prev"
+            style="@style/MyButtonStyle_Prev" />
+
+        <Button
+            android:id="@+id/btn_agsa4_finish"
+            android:background="@drawable/style_mybutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:text="完成"
+            android:textSize="14dp" />
     </RelativeLayout>
 
 </LinearLayout>
