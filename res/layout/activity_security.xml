@@ -1,12 +1,217 @@
 <!-- 手机防盗界面的布局 -->
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="这里是“手机防盗”界面" />
+        android:layout_width="fill_parent"
+        android:layout_height="32dip"
+        android:background="#ff6600"
+        android:gravity="center"
+        android:text="手机防盗"
+        android:textSize="18dp" />
 
-</RelativeLayout>
+    <!-- ****************************************************************** -->
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="安 全 号 码："
+            android:textSize="14dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:text="XXX"
+            android:textSize="14dp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.2dp"
+        android:background="#66cc99" />
+
+    <!-- ****************************************************************** -->
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="SIM绑定开启："
+            android:textSize="14dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:text="XXX"
+            android:textSize="14dp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.2dp"
+        android:background="#66cc99" />
+
+    <!-- ****************************************************************** -->
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="GPS跟踪开启："
+            android:textSize="14dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:text="XXX"
+            android:textSize="14dp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.2dp"
+        android:background="#66cc99" />
+
+    <!-- ****************************************************************** -->
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="远程数据销毁："
+            android:textSize="14dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:text="XXX"
+            android:textSize="14dp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.2dp"
+        android:background="#66cc99" />
+
+    <!-- ****************************************************************** -->
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="远程锁屏开启："
+            android:textSize="14dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:text="XXX"
+            android:textSize="14dp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.2dp"
+        android:background="#66cc99" />
+
+    <!-- ****************************************************************** -->
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp" >
+
+        <TextView
+            android:id="@+id/tvclick_goto_gfsa1"
+            android:layout_width="fill_parent"
+            android:layout_height="35dip"
+            android:background="@drawable/style_myshaperbutton"
+            android:clickable="true"
+            android:gravity="center"
+            android:text=" >> 运行设置向导 >> "
+            android:textSize="14dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <!-- ****************************************************************** -->
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:background="#4e90ee"
+        android:gravity="center_vertical"
+        android:text="手机防盗功能介绍："
+        android:textColor="#af2355"
+        android:textSize="14dp" />
+
+    <TextView
+        style="@style/MyTextViewTheme"
+        android:drawableLeft="@android:drawable/star_on"
+        android:text="SIM卡变更报警\n下次重启时SIM卡发生变动，将发送报警短信至安全号码"
+        android:textColor="#ff3300"
+        android:textSize="10dp" />
+
+    <TextView
+        style="@style/MyTextViewTheme"
+        android:drawableLeft="@android:drawable/star_on"
+        android:text="GPS追踪\n实时监测手机位置"
+        android:textColor="#ff3300"
+        android:textSize="10dp" />
+
+    <TextView
+        style="@style/MyTextViewTheme"
+        android:drawableLeft="@android:drawable/star_on"
+        android:text="远程数据销毁\n手机遗失时，使用本功能销毁隐私数据"
+        android:textColor="#ff3300"
+        android:textSize="10dp" />
+
+    <TextView
+        style="@style/MyTextViewTheme"
+        android:drawableLeft="@android:drawable/star_on"
+        android:text="远程锁屏\n手机遗失时，锁定手机"
+        android:textColor="#ff3300"
+        android:textSize="10dp" />
+
+    <!-- ****************************************************************** -->
+
+</LinearLayout>

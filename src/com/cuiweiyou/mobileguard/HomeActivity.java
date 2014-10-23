@@ -8,13 +8,11 @@ import android.content.DialogInterface.OnShowListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.graphics.AvoidXfermode;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -177,7 +175,7 @@ public class HomeActivity extends Activity {
 					// Toast.makeText(HomeActivity.this, "密码验证成功", 0).show();
 					
 					/** 如果密码验证成，进入“手机防盗”界面 **/
-					Intent i = new Intent(HomeActivity.this, GuideForSecurityActivity1.class);
+					Intent i = new Intent(HomeActivity.this, SecurityActivity.class);
 					startActivity(i);
 					
 				} else {

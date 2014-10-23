@@ -10,27 +10,49 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.GestureDetector;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 /**
  * 手机防盗设置第1个向导界面
  * SIM卡绑定
  * @author Administrator
+ * 实现 滑动切换(从网上找的办法)
+ * 1.implements OnTouchListener,OnGestureListener 
+ * 2.实例化手势识别器
+ * 3.获得当前界面的布局ll_gfsa1，然后
+ * ll_gfsa1.setOnTouchListener(this);
+ * ll_gfsa1.setLongClickable(true);
+ * 4.实现方法
  */
-public class GuideForSecurityActivity1 extends Activity {
+public class GuideForSecurityActivity1 extends Activity implements OnTouchListener,OnGestureListener {
 
 	/** 保存小数据 **/
 	private SharedPreferences sp;
 	/** 对话框控制体 **/
 	private AlertDialog tempDialog;
+	/** 手势识别器 android.view.GestureDetector **/
+	private GestureDetector gd;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_guide_for_security_activity1);
+		
+		// 创建GesTureDetector对象（创建时必须实现OnGestureListnener监听器实例）GestureDetector gd;
+		gd = new GestureDetector((OnGestureListener)this);
+		
+		// 为当前Acitivity的布局页面添加setOnTouchListener事件
+		LinearLayout ll_gfsa1 = (LinearLayout) findViewById(R.id.ll_gfsa1);
+		ll_gfsa1.setOnTouchListener(this);
+		ll_gfsa1.setLongClickable(true);
 		
 		// ------------------ 按钮，进入下一个界面 -------------------
 		Button btn_agsa1_next = (Button) findViewById(R.id.btn_agsa1_next);
@@ -39,6 +61,10 @@ public class GuideForSecurityActivity1 extends Activity {
 				Intent i = new Intent(GuideForSecurityActivity1.this, GuideForSecurityActivity2.class);
 				startActivity(i);
 				finish();
+				
+				// 进入下一关界面时的切换动画（下一个界面进入的动画，本界面移出的动画）
+				overridePendingTransition(R.anim.anim_translate_activity_in, R.anim.anim_translate_activity_out);
+				
 			}
 		});
 		
@@ -170,5 +196,74 @@ public class GuideForSecurityActivity1 extends Activity {
 				edit.commit();
 			}
 		});
+	}
+	
+	
+	// ------------用户按下触摸屏、快速移动后松开-------------
+	// e1 手势起点的移动事件。得到手指点下的位置
+	// e2 当前手势点的移动事件
+	// velocityX 每秒x轴方向移动的像素
+	// velocityY 每秒y轴方向移动的像素
+	@Override
+	public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+		
+		int FLING_MIN_DISTANCE/*最短移动距离*/ = 100, FLING_MIN_VELOCITY/*速度，每秒最小移动距离*/ = 200;
+		
+		// 手指从右向左滑动，打开右侧的界面
+		if(e1.getX() - e2.getX() > FLING_MIN_DISTANCE && Math.abs(velocityX) > FLING_MIN_VELOCITY) {
+			Intent intent = new Intent(GuideForSecurityActivity1.this, GuideForSecurityActivity2.class);
+			startActivity(intent);
+		}/* else
+			// 手指从屏幕左侧点下，向右滑动
+		if (e2.getX()-e1.getX() > FLING_MIN_DISTANCE && Math.abs(velocityX) >FLING_MIN_VELOCITY) {
+
+			//切换Activity
+			Intent intent = new Intent(GuideForSecurityActivity1.this, SecurityActivity.class);
+			startActivity(intent);
+		}*/
+
+		return false;
+	}
+
+	// 注意：若不加setLongClickable(true)的话OnFling会失效，如果不写这句的话OnGestureListener的重写方法OnDown方法返回true也可以。
+	// 只有这样，view才能够处理不同于Tap（轻触）的hold（即ACTION_MOVE，或者多个ACTION_DOWN），
+	// 我们同样可以通过layout定义中的android:longClickable来做到这一点。   
+	// 将Acityvity的TouchEvent事件交给GestureDetector处理
+	@Override
+	public boolean onTouch(View v, MotionEvent event) {
+		// TODO Auto-generated method stub
+		return gd.onTouchEvent(event);
+	}
+
+	
+	@Override
+	public boolean onDown(MotionEvent e) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void onShowPress(MotionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	// 用户（轻触触摸屏后）松开
+	public boolean onSingleTapUp(MotionEvent e) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	// 用户按下触摸屏，并拖动
+	public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX,
+			float distanceY) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	// 用户长按触摸屏
+	public void onLongPress(MotionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -8,15 +8,20 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.GestureDetector.OnGestureListener;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.widget.Button;
+import android.widget.LinearLayout;
 /**
  * 手机防盗设置第4个向导界面
  * 远程锁屏
  * @author Administrator
  */
-public class GuideForSecurityActivity4 extends Activity {
+public class GuideForSecurityActivity4 extends GuideForSecurityActivityBase {
 	
 	/** 保存小数据 **/
 	private SharedPreferences sp;
@@ -28,21 +33,26 @@ public class GuideForSecurityActivity4 extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_guide_for_security_activity4);
 		
-		Button btn_agsa4_prev = (Button) findViewById(R.id.btn_agsa4_prev);
-		btn_agsa4_prev.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				Intent i = new Intent(GuideForSecurityActivity4.this, GuideForSecurityActivity3.class);
-				startActivity(i);
-				finish();
-			}
-		});
-		
 		Button btn_agsa4_finish = (Button) findViewById(R.id.btn_agsa4_finish);
 		btn_agsa4_finish.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				Intent i = new Intent(GuideForSecurityActivity4.this, HomeActivity.class);
+				Intent i = new Intent(GuideForSecurityActivity4.this, SecurityActivity.class);
 				startActivity(i);
 				finish();
+				
+				// 下一个界面
+				overridePendingTransition(R.anim.anim_translate_activity_in, R.anim.anim_translate_activity_out);
+			}
+		});
+		
+		Button btn_agsa4_prev = (Button) findViewById(R.id.btn_agsa4_prev);
+		btn_agsa4_prev.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+/*				Intent i = new Intent(GuideForSecurityActivity4.this, GuideForSecurityActivity3.class);
+				startActivity(i);
+				finish();*/
+				
+				goPrevActivity();
 			}
 		});
 		
@@ -73,6 +83,18 @@ public class GuideForSecurityActivity4 extends Activity {
 				edit.commit();
 			}
 		});
+	}
+
+
+	@Override
+	public void goNextActivity() {
+		//
+	}
+
+	@Override
+	public void goPrevActivity() {
+		Intent intent = new Intent(GuideForSecurityActivity4.this, GuideForSecurityActivity3.class);
+		startActivity(intent);
 	}
 
 }

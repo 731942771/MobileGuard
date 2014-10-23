@@ -8,16 +8,21 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.GestureDetector.OnGestureListener;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 /**
  * 手机防盗设置第3个向导界面
  * 远程数据销毁
  * @author Administrator
  */
-public class GuideForSecurityActivity3 extends Activity {
+public class GuideForSecurityActivity3 extends GuideForSecurityActivityBase{
 	/** 保存小数据 **/
 	private SharedPreferences sp;
 	/** 对话框控制体 **/
@@ -30,23 +35,26 @@ public class GuideForSecurityActivity3 extends Activity {
 		
 		Button btn_agsa3_next = (Button) findViewById(R.id.btn_agsa3_next);
 		btn_agsa3_next.setOnClickListener(new OnClickListener() {
-			
-			@Override
 			public void onClick(View v) {
-				Intent i = new Intent(GuideForSecurityActivity3.this, GuideForSecurityActivity4.class);
+/*				Intent i = new Intent(GuideForSecurityActivity3.this, GuideForSecurityActivity4.class);
 				startActivity(i);
 				finish();
+				
+				// 下一个界面
+				overridePendingTransition(R.anim.anim_translate_activity_in, R.anim.anim_translate_activity_out);*/
+				
+				goNextActivity();
 			}
 		});
 		
 		Button btn_agsa3_prev = (Button) findViewById(R.id.btn_agsa3_prev);
 		btn_agsa3_prev.setOnClickListener(new OnClickListener() {
-			
-			@Override
 			public void onClick(View v) {
-				Intent i = new Intent(GuideForSecurityActivity3.this, GuideForSecurityActivity2.class);
+/*				Intent i = new Intent(GuideForSecurityActivity3.this, GuideForSecurityActivity2.class);
 				startActivity(i);
-				finish();
+				finish();*/
+				
+				goPrevActivity();
 			}
 		});
 		
@@ -77,6 +85,20 @@ public class GuideForSecurityActivity3 extends Activity {
 			}
 		});
 		
+	}
+
+	@Override
+	public void goNextActivity() {
+		Intent intent = new Intent(GuideForSecurityActivity3.this, GuideForSecurityActivity4.class);
+		startActivity(intent);
+		// 下一个界面
+		overridePendingTransition(R.anim.anim_translate_activity_in, R.anim.anim_translate_activity_out);
+	}
+
+	@Override
+	public void goPrevActivity() {
+		Intent intent = new Intent(GuideForSecurityActivity3.this, GuideForSecurityActivity2.class);
+		startActivity(intent);
 	}
 
 }

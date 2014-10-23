@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 位移动画
+from=起点位置。100%p，屏幕宽度的一倍，即位于当前屏幕右侧
+to=目标位置。0即当前界面的屏幕位置
+duration=时长，毫秒 -->
+<translate xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fromXDelta="100%p"
+    android:toXDelta="0"
+    android:fromYDelta="0"
+    android:toYDelta="0"
+    android:duration="1500">
+</translate>

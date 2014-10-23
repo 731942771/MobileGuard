@@ -1,7 +1,7 @@
-# 这个README.md须在Eclipse里创建<br/><br/>
-手机安全卫士<br/><br/>
+# 这个README.md是在Eclipse里创建的<br/>
+《手机安全卫士》<br/>
 创建：20140923<br/>
-Author：Vigiles<br/><br/>
+Author：Vigiles<br/>
 最低版本：2.3.3 <br/>
 目标版本：4.4 <br/>
 编译版本：4.4 <br/><br/>
@@ -47,3 +47,5 @@ View.inflate()方法把xml布局转为View控件<br/><br/>
 1.设置向导流完成，4个界面<br/>
 2.第一个界面设置安全号码初步完成<br/>
 
+#第9次提交
+设置向导4个界面增加滑动屏幕切换<br/>

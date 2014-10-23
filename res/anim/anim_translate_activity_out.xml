@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 位移动画
+from=起点位置，从当前界面所在的位置0
+to=目标位置，向左移动到整个屏幕外
+duration=时长 -->
+<translate xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fromXDelta="0"
+    android:toXDelta="-100%p"
+    android:fromYDelta="0"
+    android:toYDelta="0"
+    android:duration="1500">
+</translate>
