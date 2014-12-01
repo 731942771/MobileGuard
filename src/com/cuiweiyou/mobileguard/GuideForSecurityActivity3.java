@@ -33,6 +33,7 @@ public class GuideForSecurityActivity3 extends GuideForSecurityActivityBase{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_guide_for_security_activity3);
 		
+		// 下一页
 		Button btn_agsa3_next = (Button) findViewById(R.id.btn_agsa3_next);
 		btn_agsa3_next.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
@@ -47,6 +48,7 @@ public class GuideForSecurityActivity3 extends GuideForSecurityActivityBase{
 			}
 		});
 		
+		// 上一页
 		Button btn_agsa3_prev = (Button) findViewById(R.id.btn_agsa3_prev);
 		btn_agsa3_prev.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
@@ -92,13 +94,17 @@ public class GuideForSecurityActivity3 extends GuideForSecurityActivityBase{
 		Intent intent = new Intent(GuideForSecurityActivity3.this, GuideForSecurityActivity4.class);
 		startActivity(intent);
 		// 下一个界面
-		overridePendingTransition(R.anim.anim_translate_activity_in, R.anim.anim_translate_activity_out);
+		//overridePendingTransition(R.anim.anim_translate_activity_in, R.anim.anim_translate_activity_out);
+		
+		finish();
 	}
 
 	@Override
 	public void goPrevActivity() {
 		Intent intent = new Intent(GuideForSecurityActivity3.this, GuideForSecurityActivity2.class);
 		startActivity(intent);
+		
+		finish();
 	}
 
 }

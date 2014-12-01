@@ -33,18 +33,21 @@ public class GuideForSecurityActivity4 extends GuideForSecurityActivityBase {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_guide_for_security_activity4);
 		
+		// 结束（下一页）按钮，进入“手机防盗”界面
 		Button btn_agsa4_finish = (Button) findViewById(R.id.btn_agsa4_finish);
 		btn_agsa4_finish.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				Intent i = new Intent(GuideForSecurityActivity4.this, SecurityActivity.class);
 				startActivity(i);
-				finish();
 				
 				// 下一个界面
-				overridePendingTransition(R.anim.anim_translate_activity_in, R.anim.anim_translate_activity_out);
+				// overridePendingTransition(R.anim.anim_translate_activity_in, R.anim.anim_translate_activity_out);
+				
+				finish();
 			}
 		});
 		
+		// 上一页按钮
 		Button btn_agsa4_prev = (Button) findViewById(R.id.btn_agsa4_prev);
 		btn_agsa4_prev.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
@@ -95,6 +98,7 @@ public class GuideForSecurityActivity4 extends GuideForSecurityActivityBase {
 	public void goPrevActivity() {
 		Intent intent = new Intent(GuideForSecurityActivity4.this, GuideForSecurityActivity3.class);
 		startActivity(intent);
+		finish();
 	}
 
 }

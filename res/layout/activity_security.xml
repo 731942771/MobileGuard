@@ -13,8 +13,7 @@
         android:text="手机防盗"
         android:textSize="18dp" />
 
-    <!-- ****************************************************************** -->
-
+    <!-- *****************************安全号码******************************* -->
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -28,11 +27,12 @@
             android:textSize="14dp" />
 
         <TextView
+            android:id="@+id/tv_sim_guard_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
-            android:text="XXX"
+            android:text="未设置"
             android:textSize="14dp" />
     </RelativeLayout>
 
@@ -41,8 +41,7 @@
         android:layout_height="0.2dp"
         android:background="#66cc99" />
 
-    <!-- ****************************************************************** -->
-
+    <!-- **************************** SIM绑定 ************************** -->
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -56,11 +55,12 @@
             android:textSize="14dp" />
 
         <TextView
+            android:id="@+id/tv_sim_power"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
-            android:text="XXX"
+            android:text="未开启"
             android:textSize="14dp" />
     </RelativeLayout>
 
@@ -69,8 +69,7 @@
         android:layout_height="0.2dp"
         android:background="#66cc99" />
 
-    <!-- ****************************************************************** -->
-
+    <!-- *************************GPS跟踪开启******************************* -->
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -84,11 +83,12 @@
             android:textSize="14dp" />
 
         <TextView
+            android:id="@+id/tv_gps_power"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
-            android:text="XXX"
+            android:text="未开启"
             android:textSize="14dp" />
     </RelativeLayout>
 
@@ -97,8 +97,7 @@
         android:layout_height="0.2dp"
         android:background="#66cc99" />
 
-    <!-- ****************************************************************** -->
-
+    <!-- ******************************远程数据销毁************************ -->
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -112,11 +111,12 @@
             android:textSize="14dp" />
 
         <TextView
+            android:id="@+id/tv_breakdata_power"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
-            android:text="XXX"
+            android:text="未开启"
             android:textSize="14dp" />
     </RelativeLayout>
 
@@ -125,8 +125,7 @@
         android:layout_height="0.2dp"
         android:background="#66cc99" />
 
-    <!-- ****************************************************************** -->
-
+    <!-- ****************************** 远程锁屏开启 ****************************** -->
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -140,11 +139,12 @@
             android:textSize="14dp" />
 
         <TextView
+            android:id="@+id/tv_clockscreen_power"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
-            android:text="XXX"
+            android:text="未开启"
             android:textSize="14dp" />
     </RelativeLayout>
 
@@ -154,7 +154,6 @@
         android:background="#66cc99" />
 
     <!-- ****************************************************************** -->
-
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -172,8 +171,7 @@
             android:textStyle="bold" />
     </RelativeLayout>
 
-    <!-- ****************************************************************** -->
-
+    <!-- *************************** 短信指令说明 ***************************** -->
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="30dp"
@@ -187,28 +185,28 @@
     <TextView
         style="@style/MyTextViewTheme"
         android:drawableLeft="@android:drawable/star_on"
-        android:text="SIM卡变更报警\n下次重启时SIM卡发生变动，将发送报警短信至安全号码"
+        android:text="SIM卡绑定\n短信指令：“#*sim*#”\n使本手机播放报警音乐"
         android:textColor="#ff3300"
         android:textSize="10dp" />
 
     <TextView
         style="@style/MyTextViewTheme"
         android:drawableLeft="@android:drawable/star_on"
-        android:text="GPS追踪\n实时监测手机位置"
+        android:text="GPS追踪\n短信指令：“#*gps*#”\n实时监测本手机位置"
         android:textColor="#ff3300"
         android:textSize="10dp" />
 
     <TextView
         style="@style/MyTextViewTheme"
         android:drawableLeft="@android:drawable/star_on"
-        android:text="远程数据销毁\n手机遗失时，使用本功能销毁隐私数据"
+        android:text="远程数据销毁\n短信指令：“#*break*#”\n销毁本手机内隐私数据"
         android:textColor="#ff3300"
         android:textSize="10dp" />
 
     <TextView
         style="@style/MyTextViewTheme"
         android:drawableLeft="@android:drawable/star_on"
-        android:text="远程锁屏\n手机遗失时，锁定手机"
+        android:text="远程锁屏\n短信指令：“#*lock*#”\n锁定本手机屏幕"
         android:textColor="#ff3300"
         android:textSize="10dp" />
 

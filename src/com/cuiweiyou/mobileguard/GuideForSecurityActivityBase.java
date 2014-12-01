@@ -18,18 +18,8 @@ public abstract class GuideForSecurityActivityBase extends Activity {
 
 		// 创建GesTureDetector对象
 		gd = new GestureDetector(this, new SimpleOnGestureListener() {
-			// ------------用户按下触摸屏、快速移动后松开-------------
-			// e1 手势起点的移动事件。得到手指点下的位置
-			// e2 当前手势点的移动事件
-			// velocityX 每秒x轴方向移动的像素
-			// velocityY 每秒y轴方向移动的像素
-			@Override
-			public boolean onFling(MotionEvent e1, MotionEvent e2,
-					float velocityX, float velocityY) {
-				int FLING_MIN_DISTANCE/* 最短移动距离 */= 100, FLING_MIN_VELOCITY/*
-																		 * 速度，
-																		 * 每秒最小移动距离
-																		 */= 200;
+			public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+				int FLING_MIN_DISTANCE/* 最短移动距离 */= 100, FLING_MIN_VELOCITY/* 速度，每秒最小移动距离 */= 200;
 
 				// 手指从右向左滑动，打开右侧的界面
 				if (e1.getX() - e2.getX() > FLING_MIN_DISTANCE && Math.abs(velocityX) > FLING_MIN_VELOCITY) {

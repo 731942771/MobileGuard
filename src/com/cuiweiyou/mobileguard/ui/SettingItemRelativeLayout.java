@@ -10,13 +10,11 @@ import android.widget.TextView;
 import com.cuiweiyou.mobileguard.R;
 
 /**
- * ~~~第5次提交~~~<br/>
- * ！2）------------------------自定义控件 2 ---------------------------------------<br/>
+ * ------ 自定义控件 
  * 根据自定义的“设置中心”界面的条目布局xml文件，创建这个条目布局类<br/>
  * 实现从xml到View的转换<br/>
  * 同时增加一些修改子控件的功能<br/>
  * 后续可以通过调研此类创建出每个条目<br/>
- * 
  * @author Administrator
  */
 public class SettingItemRelativeLayout extends RelativeLayout {

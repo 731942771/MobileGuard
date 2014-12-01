@@ -21,5 +21,13 @@
 	    android:id="@+id/sirl_setting_item"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"/>
+
+	<com.cuiweiyou.mobileguard.ui.SettingItemRelativeLayout
+	    cuiweiyou:autoupdate_title="设备管理员"
+	    cuiweiyou:autoupdate_desc_on="管理员功能已经打开。\n可以使用短信控制远程锁屏、清除数据"
+	    cuiweiyou:autoupdate_desc_off="管理员功能已经关闭。\n现在不能使用远程锁屏、清除数据功能"
+	    android:id="@+id/sirl_setting_admin"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"/>
 	
 </LinearLayout>
